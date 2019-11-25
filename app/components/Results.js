@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { battle } from "../util/api";
 import Card from "./Card";
+import Loading from "./Loading";
 import {
   FaCompass,
   FaBriefcase,
@@ -81,10 +82,17 @@ export default class Results extends Component {
     const { onReset } = this.props;
     const { winner, loser, error, loading } = this.state;
     if (loading) {
-      return <p>LOADING...</p>;
+      return <Loading text="Loading Results" />;
     }
     if (error) {
-      return <p className="center-text error"> {error}</p>;
+      return (
+        <>
+          <p className="center-text error"> {error}</p>{" "}
+          <button onClick={onReset} className="btn dark-btn btn-space">
+            Reset
+          </button>
+        </>
+      );
     }
 
     return (
