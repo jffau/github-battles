@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
+import Loading from "./Loading";
 import {
   FaUser,
   FaStar,
@@ -130,9 +131,9 @@ export default class Popular extends React.Component {
   }
 
   isLoading() {
-    const { selectedLanguage, repos, errors } = this.state;
+    const { selectedLanguage, repos, error } = this.state;
 
-    return !repos[selectedLanguage] && errors === null;
+    return !repos[selectedLanguage] && error === null;
   }
 
   render() {
@@ -144,7 +145,7 @@ export default class Popular extends React.Component {
           selected={selectedLanguage}
           onUpdateLanguage={this.updateLanguage}
         />
-        {this.isLoading() && <p>Loading...</p>}
+        {this.isLoading() && <Loading text="Getting repos" />}
         {error && <p className="center-text error">{error}</p>}
         {repos[selectedLanguage] && (
           <ReposGrid repos={repos[selectedLanguage]} />
