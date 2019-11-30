@@ -61,11 +61,16 @@ li {
   background: transparent;
 }
 
+/* nav */
 .nav-link {
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
   color: inherit;
+}
+
+.nav li {
+  margin-right: 10px;
 }
 
 /* Repo Grid: */
@@ -76,6 +81,10 @@ li {
 
 .space-around {
   justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .header-lg {

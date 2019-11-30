@@ -1,6 +1,8 @@
 var React = require("react");
 
 var ReactDOM = require("react-dom");
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Popular from "./components/Popular";
 import Battle from "./components/Battle";
 import Nav from "./components/Nav";
@@ -25,15 +27,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <ThemeProvider value={this.state}>
-        <div className={this.state.theme}>
-          <div className="container">
-            <Nav />
-            {/* <Popular /> */}
-            <Battle />
+      <Router>
+        <ThemeProvider value={this.state}>
+          <div className={this.state.theme}>
+            <div className="container">
+              <Nav />
+              <Route exact path="/" component={Popular} />
+              <Route path="/battle" component={Battle} />
+            </div>
           </div>
-        </div>
-      </ThemeProvider>
+        </ThemeProvider>
+      </Router>
     );
   }
 }
