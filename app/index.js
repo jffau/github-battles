@@ -3,6 +3,7 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 import Popular from "./components/Popular";
 import Battle from "./components/Battle";
+import Nav from "./components/Nav";
 
 import { ThemeProvider } from "./contexts/theme";
 
@@ -25,8 +26,12 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider value={this.state}>
-        <div className="container">
-          <Battle />
+        <div className={this.state.theme}>
+          <div className="container">
+            <Nav />
+            <Popular />
+            <Battle />
+          </div>
         </div>
       </ThemeProvider>
     );

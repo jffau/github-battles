@@ -11,6 +11,12 @@ body {
     Ubuntu, Cantarell, Helvetica Neue, sans-serif;
 }
 
+.dark {
+  color: #dadada;
+  background: #1c2022;
+  min-height: 100%;
+}
+
 ul {
   padding: 0;
 }
