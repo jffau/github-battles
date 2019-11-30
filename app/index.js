@@ -1,7 +1,7 @@
 var React = require("react");
 
 var ReactDOM = require("react-dom");
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Popular from "./components/Popular";
 import Battle from "./components/Battle";
@@ -33,9 +33,13 @@ class App extends React.Component {
           <div className={this.state.theme}>
             <div className="container">
               <Nav />
-              <Route exact path="/" component={Popular} />
-              <Route exact path="/battle" component={Battle} />
-              <Route path="/battle/results" component={Results} />
+              <Switch>
+                <Route exact path="/" component={Popular} />
+                <Route exact path="/battle" component={Battle} />
+                <Route path="/battle/results" component={Results} />
+                {/* Only renders if above don't match (Switch only returns first match) */}
+                <Route render={() => <h1> 404 - not found!</h1>} />
+              </Switch>
             </div>
           </div>
         </ThemeProvider>
