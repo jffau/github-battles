@@ -27,14 +27,16 @@ const styles = {
 
 function Tooltip({ text, children }) {
   return (
-    <Hover>
-      {hovering => (
-        <div style={styles.container}>
-          {hovering === true && <div style={styles.tooltip}>{text}</div>}
-          {children}
-        </div>
-      )}
-    </Hover>
+    <Hover
+      render={hover => {
+        return (
+          <div style={styles.container}>
+            {hover === true && <div style={styles.tooltip}>{text}</div>}
+            {children}
+          </div>
+        );
+      }}
+    ></Hover>
   );
 }
 
